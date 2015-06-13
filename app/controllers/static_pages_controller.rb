@@ -6,5 +6,6 @@ class StaticPagesController < ApplicationController
   end
   
   def about
+    puts 'Test'
   end
 end
