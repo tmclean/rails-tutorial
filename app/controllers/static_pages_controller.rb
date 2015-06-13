@@ -6,6 +6,8 @@ class StaticPagesController < ApplicationController
   end
   
   def about
-    puts 'Test'
+  end
+  
+  def contact
   end
 end
