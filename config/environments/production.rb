@@ -72,7 +72,7 @@ Rails.application.configure do
     :authentication       => :plain,
     :user_name            => ENV['SMTP_USERNAME'],
     :password             => ENV['SMTP_PASSWORD'],
-    :domain               => 'mcleancode.com',
+    :domain               => 'tmclean-tutorial-sample-app.herokuapp.com',
     :enable_starttls_auto => true
   }
   
