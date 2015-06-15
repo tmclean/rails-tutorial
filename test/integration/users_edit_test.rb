@@ -3,7 +3,8 @@ require 'test_helper'
 class UsersEditTest < ActionDispatch::IntegrationTest
 
   def setup
-    @user = users( :tom )
+    @admin = users( :tom )
+    @user = users( :holly )
   end
   
   test "unsuccessful edit" do
@@ -43,6 +44,19 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     @user.reload
     assert_equal name, @user.name
     assert_equal email, @user.email
+  end
+  
+  test "unsuccessful attempt to escalate privileges to admin" do
+    log_in_as( @admin )
+    patch user_path( @user ), user: { name: @user.name, 
+                                      email: @user.email, 
+                                      password: '', 
+                                      password_confirmation: '',
+                                      admin: true }
+    
+    @user.reload
+    
+    assert_not @user.admin?
   end
 
 end
